@@ -1,0 +1,67 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace proje40
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        { 
+            List<int> sayilar = new List<int>();
+            sayilar.Add(4);
+            sayilar.Add(5);
+
+            int[] data = new int[5];
+            data[0] = 1;
+            data[1] = 2;
+            data[2] = 3;
+
+            //for (int i = 0; i < data.Length; i++)
+            //{
+            //    sayilar.Add(data[i]);  // buranın işlevini tek bir kod yapıyor (aşşağı satırdaki)
+
+            //}
+            sayilar.AddRange(data);
+
+            int capacity = sayilar.Capacity;
+            int count = sayilar.Count;
+            sayilar.TrimExcess(); // capasiteyi ve countu eşitliyor 
+            capacity = sayilar.Capacity;
+            count = sayilar.Count;
+            sayilar.ForEach(i=> Console.WriteLine(i)); // dizideki bütün elemanları ekrana yazdırıyor 
+
+            sayilar.Insert(2, 101);// 2. indexe 101 değerini atıyor 2. indextekini değeri bir yukarı indexe atıyor
+            bool a = sayilar.Any(i => i < 0); // True False döndürüyor 
+            bool b = sayilar.Any(i=> i < 5);
+            sayilar.Sort();//büyükten küçüğe || A-Z sıralar
+            sayilar.Reverse();// küçükten büyüğe || Z-A sıralar
+            bool siler = sayilar.Remove(1); // siler
+            int siler1 = sayilar.RemoveAll(i => i > 3); // 3'ten büyükleri siler
+            int enYuksekDeger = sayilar.Max(); //Maximum değeri döndürür
+            int enKucukDeger = sayilar.Min();//Minumum değeri döndürü
+            int toplamdeger = sayilar.Sum();// toplam değeri döndürü
+
+            Console.WriteLine("daha aşşağı bulmak istediğiniz sayıyı giriniz ");
+            int x1 = Convert.ToInt32(Console.ReadLine());
+            if (sayilar.Any(sayi => sayi < x1))
+            {
+                foreach (int i in sayilar)
+                {
+                    if (i < x1) 
+                    {
+                        Console.WriteLine("İstediğiniz sayıdan küçük sayıla,",i);
+                    }
+                    else
+                    {
+                        Console.WriteLine("sayi bulunamadı");
+                    }
+                }
+
+            }
+
+        }
+    }
+}
